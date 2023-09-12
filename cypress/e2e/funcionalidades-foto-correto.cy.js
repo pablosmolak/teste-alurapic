@@ -2,12 +2,12 @@ describe('Funcionalidades Foto, cenário de sucesso', () => {
   
     beforeEach(() => {
       cy.visit('https://3076-cypress-alurapic-front.vercel.app/#/home')
-    })
-  
-    it('Deve cadastrar com sucesso uma foto', () => {
       cy.getByData('loginUserName').type('smolakinho')
       cy.getByData('loginPassword').type('12345678')
       cy.getByData('loginBtn').click()
+    })
+  
+    it('Deve cadastrar com sucesso uma foto', () => {
       cy.get(':nth-child(2) > a > .fa').click()
       cy.get('[type="file"]').selectFile('images/lapadaseca.jpeg', {force:true})
       cy.get('[placeholder="photo description"]').type('Lapada seca')
@@ -18,9 +18,6 @@ describe('Funcionalidades Foto, cenário de sucesso', () => {
     })
 
     it('Deve dar like e comentar na foto', () => {
-      cy.getByData('loginUserName').type('smolakinho')
-      cy.getByData('loginPassword').type('12345678')
-      cy.getByData('loginBtn').click()
       cy.get('.img-thumbnail').first().click()
       cy.get('.fa-heart-o').click()
       cy.wait(1000)
@@ -32,9 +29,6 @@ describe('Funcionalidades Foto, cenário de sucesso', () => {
     })
 
     it('Deve Remover uma foto com sucesso', () => {
-      cy.getByData('loginUserName').type('smolakinho')
-      cy.getByData('loginPassword').type('12345678')
-      cy.getByData('loginBtn').click()
       cy.get('.img-thumbnail').first().click()
       cy.wait(2000)
       cy.get('.fa-trash-o').click()
@@ -42,10 +36,7 @@ describe('Funcionalidades Foto, cenário de sucesso', () => {
     })
 
     it('Deve Pesquisar uma foto entre duas opções', () => {
-      cy.getByData('loginUserName').type('smolakinho')
-      cy.getByData('loginPassword').type('12345678')
-      cy.getByData('loginBtn').click()
-
+    
       /*Adicionando a primeira imagem*/
       cy.get(':nth-child(2) > a > .fa').click()
       cy.get('[type="file"]').selectFile('images/radiacao.jpeg', {force:true})
